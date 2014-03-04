@@ -1,0 +1,9 @@
+ <launch>
+  <node name="local_map" pkg="local_map" type="local_map_node">
+    <remap from="scan_in" to="/robot_0/base_scan"/>
+    <remap from="static_map" to="static_map_lane"/>
+    <param name="robot_frame_id" type="string" value="/robot_0/base_link"/>
+    <param name="map_w" type="double" value="5"/>
+    <param name="map_h" type="double" value="5"/>
+  </node>
+</launch>

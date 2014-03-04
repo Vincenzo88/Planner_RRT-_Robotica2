@@ -1,0 +1,15 @@
+<package>
+  <description brief="pnc_msgs">
+
+     pnc_msgs
+
+  </description>
+  <author>golfcar</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/pnc_msgs</url>
+  <depend package="geometry_msgs"/>
+  <depend package="nav_msgs" />
+</package>
+
+

@@ -1,2 +1,11 @@
 */build*
 *.kdev*
+*.py
+*~
+*.lisp
+*.asd
+*/msg_gen*
+*/bin*
+*/lib*
+Makefile
+*.cmake
