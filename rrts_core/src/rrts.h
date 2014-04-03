@@ -156,7 +156,15 @@ class rrts_t
       root_cost = system->get_zero_cost();
       infinite_cost = system->get_infinite_cost();
       do_branch_and_bound = do_branch_and_bound_;
-            
+      double vol_op = 1;
+      for(int i = 0; i < num_dim; i++){
+	vol_op *= system->operating_region.s[i];
+      }
+	
+      gamma = 2.5*vol_op;
+      
+      cout << "Volume operating region: " << vol_op << endl;
+      
       return 0;
     }
     

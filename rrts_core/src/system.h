@@ -83,7 +83,8 @@ class system_t
     virtual int get_key(const state& s, float* key)
     {
       for(size_t i=0; i<N; i++)
-        key[i] = (s.x[i] - operating_region.c[i])/operating_region.s[i] + 0.5;
+        //key[i] = (s.x[i] - operating_region.c[i])/operating_region.s[i] + 0.5;
+	key[i] = s.x[i];
       //cout<<"key: "<< key[0]<<" "<<key[1]<<" "<<key[2]<<endl;
       return 0;
     }

@@ -191,8 +191,10 @@ class dynamical_system_t
       return 0;
     }
     
-    virtual int get_near_vertices(const state& s, vector<vertex*>& near_vertices, kdtree* kdt, float gamma, int num_vertices, const region& operating_region){
+   virtual int get_near_vertices(const state& s, vector<vertex*>& near_vertices, kdtree* kdt, float gamma, int num_vertices, const region& operating_region){
       int toret = 0;
+      
+      cout << "sono arrivato qui" << endl;
       
       float* key = new float[N];
       get_key(s, key,	 operating_region);
@@ -211,6 +213,7 @@ class dynamical_system_t
           toret = 1;
         else
         {
+	  
           vertex* vc = (vertex*)kd_res_item_data(kdres);
           near_vertices.push_back(vc);
         }

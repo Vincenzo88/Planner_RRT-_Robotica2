@@ -270,7 +270,7 @@ void planner_t::on_planner_timer(const ros::TimerEvent &e)
    cost_iteration.push_back(rrts.get_best_cost()->val);
    edge.push_back(rrts.num_edge);
    
-   if(rrts.num_iterations%100 == 0){
+   if(rrts.num_iterations%50 == 0){
       publish_rrts_tree();
       publish_committed_trajectory();
     }
