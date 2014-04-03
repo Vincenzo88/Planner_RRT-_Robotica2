@@ -123,13 +123,15 @@ class system_t
           //cout << "not in free space...retrying" << endl << flush;
           for(size_t i=0; i<N; i++)
             spos->x[i] = operating_region.c[i] + (RANDF-0.5)*operating_region.s[i];
-          found_free_state = !is_in_collision(*spos);
+          found_free_state = !is_in_collision(*spos); 
+        
         }
         //cout << "Now in free space...exiting.." << endl << flush;
         return spos;
       }
       return NULL;
     }
+    
     virtual state* sample_in_goal()
     {
       state* ps = new state();

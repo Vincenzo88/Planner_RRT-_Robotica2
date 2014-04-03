@@ -2,16 +2,11 @@
 #include <ctime>
 
 #include <ros/ros.h>
-#include <message_filters/subscriber.h>
-#include <geometry_msgs/Point32.h>
-#include <geometry_msgs/PointStamped.h>
-#include <geometry_msgs/PoseStamped.h>
-#include <geometry_msgs/Pose.h>
-#include <sensor_msgs/PointCloud.h>
-#include <nav_msgs/OccupancyGrid.h>
-#include <nav_msgs/Path.h>
 
-#include <tf/tf.h>
+#include <iostream>
+#include <ctime>
+
+#include <geometry_msgs/PoseStamped.h>
 
 using namespace std;
 

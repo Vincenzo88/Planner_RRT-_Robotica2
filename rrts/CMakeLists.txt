@@ -45,5 +45,7 @@ rosbuild_genmsg()
 #rosbuild_add_executable(rrts_node_route src/rrts_node_route.cpp)
 rosbuild_add_executable(rrts_global_map src/rrt_node_vincenzo.cpp)
 target_link_libraries(rrts_global_map rrts_core)
+
+#rosbuild_add_executable(testmain src/test_main.cpp)
 #target_link_libraries(rrts_node_route rrts_core)
 #target_link_libraries(rrts_test rrts_core)

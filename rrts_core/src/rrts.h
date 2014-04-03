@@ -68,6 +68,7 @@ class rrts_t
 
     system_t<N>* system;
 
+    int num_edge;
     int num_dim;
     int num_vertices;
     int num_iterations;
@@ -103,10 +104,11 @@ class rrts_t
       kdtree = NULL;
       num_vertices = 0;
       num_iterations = 0;
+      num_edge = 0;
       num_dim = N;
 
       do_branch_and_bound = true;
-
+      
     }
     ~rrts_t()
     {
@@ -174,7 +176,7 @@ class rrts_t
         return 1;
 
       //cout << "SAMPLE: "; psr->print(); cout << endl;
-
+      
       state& sr = *psr;
 
       // 2. compute nearest vertices
@@ -266,6 +268,7 @@ class rrts_t
     {
       system->get_near_vertices(s, near_vertices, kdtree, gamma, num_vertices);
       /*
+      
       int toret = 0;
       float* key = new float[N];
       system->get_key(s, key);
@@ -301,7 +304,8 @@ class rrts_t
 
       delete[] key;
       kd_res_free(kdres);
-      return toret;*/
+      return toret;
+      */
     }
 
     int update_best_vertex(vertex& v)
@@ -339,6 +343,7 @@ class rrts_t
       insert_into_kdtree(*new_vertex);
 
       insert_edge(vs, e, *new_vertex);
+      num_edge ++;
       return new_vertex;
     }
     

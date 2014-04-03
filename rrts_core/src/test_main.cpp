@@ -59,10 +59,12 @@ int main()
   trajectory_t traj;
   for(int i=0; i<max_iterations; i++)
   {
-    if(i%diter == 0)
-      cout<<i<<" "<<rrts.get_best_cost()->val<<endl;
+    cout << rrts.num_iterations << " " << rrts.get_best_cost()->val<< " " << rrts.num_vertices<< endl; 
+    //if(i%diter == 0)
+      //cout<<i<<" "<<rrts.get_best_cost()->val<<endl;
     //cout<<"check_tree: "<< rrts.check_tree() << endl;
     rrts.iteration();
+    
 #if 0
     if(rrts.system->is_in_goal(*(rrts.root->state)))
       break;
