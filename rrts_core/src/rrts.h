@@ -11,6 +11,7 @@
 
 #include "tree.h"
 #include "system.h"
+
 using namespace std;
 
 template<size_t N> class vertex_t;
@@ -162,9 +163,6 @@ class rrts_t
       }
 	
       gamma = 2.5*vol_op;
-      
-      cout << "Volume operating region: " << vol_op << endl;
-      
       return 0;
     }
     

@@ -142,7 +142,7 @@ planner_t::planner_t()
   map_received = false;
   goal_received = false;
   max_iterations_dt = 100;
-  max_iterations_rrt = 2000;
+  max_iterations_rrt = 5000;
   
 
   rrts_tree_pub = nh.advertise<sensor_msgs::PointCloud>("rrts_tree",1);
@@ -230,7 +230,7 @@ void planner_t::on_map(const nav_msgs::OccupancyGridConstPtr mapptr)
   size[2] = 2*M_PI;
   
   system.operating_region = region(zero, size);
-  rrts.goal_sample_freq = 0.005;
+  rrts.goal_sample_freq = 0.010;
   
 }
 
@@ -270,7 +270,7 @@ void planner_t::on_planner_timer(const ros::TimerEvent &e)
    cost_iteration.push_back(rrts.get_best_cost()->val);
    edge.push_back(rrts.num_edge);
    
-   if(rrts.num_iterations%50 == 0){
+   if(rrts.num_iterations%4999 == 0){
       publish_rrts_tree();
       publish_committed_trajectory();
     }

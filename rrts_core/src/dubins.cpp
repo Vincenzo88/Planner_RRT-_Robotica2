@@ -303,21 +303,18 @@ float dubins_t::evaluate_extend_cost(const state* si, const state* sf, optimizat
   return min_cost;
 }
 
-int dubins_t::get_near_vertices(const state& s, vector<vertex*>& near_vertices, kdtree* kdt, float gamma, int num_vertices, region operating_region){
+/*int dubins_t::get_near_vertices(const state& s, vector<vertex*>& near_vertices, kdtree* kdt, float gamma, int num_vertices,const region& operating_region){
   
   // s è lo stato di cui voglio determinare il vicinato
   // per la coordinate s[0] (x), s[1] (y), s[2], (theta rad)
-
+  
+  
       int toret = 0;
   
-      int c = 0.5;
-      float t = gamma*pow(log(num_vertices+1.0)/(pow(c,3)*(num_vertices+1.0)),0.25);
-      
-      cout << "sono arrivato qui" << endl;
-      
+      int c = 100;
+      float t = (gamma)*pow(log(num_vertices+1.0)/(pow(c,3)*(num_vertices+1.0)),0.25);
       float d = 0.5*c*t*sqrt(pow(t,2)+1);
       float delta = sqrt(pow(d,2)+2*turning_radii[0]*d);
-      
       float* key = new float[3];
       get_key(s, key,	 operating_region,delta);
       
@@ -325,20 +322,24 @@ int dubins_t::get_near_vertices(const state& s, vector<vertex*>& near_vertices, 
       kdres* kdres = kd_nearest_rangef(kdt, key, d);
 
       int num_near_vertices = kd_res_size(kdres);
+      
       if(!num_near_vertices)
       {
         kd_res_free(kdres);
 
         // get nearest vertex
         kdres = kd_nearestf(kdt, key);
-        if(kd_res_end(kdres))
+        if(kd_res_end(kdres)){
           toret = 1;
+	 
+	}
         else
         {
 	  
           vertex* vc = (vertex*)kd_res_item_data(kdres);
-	  if (!abs(vc->state->x[2] - s.x[2]) > c*t)
+	  if (fabs(vc->state->x[2] - s.x[2]) < c*t)
           near_vertices.push_back(vc);
+	  
         }
       }
       else
@@ -348,8 +349,9 @@ int dubins_t::get_near_vertices(const state& s, vector<vertex*>& near_vertices, 
         {
 	  
           vertex* vc = (vertex*)kd_res_item_data(kdres);
-	  if (!abs(vc->state->x[2] - s.x[2]) > c*t)
+	  if (fabs(vc->state->x[2] - s.x[2]) < c*t)
           near_vertices.push_back(vc);
+	  
 	  
           kd_res_next(kdres);
         }
@@ -358,18 +360,18 @@ int dubins_t::get_near_vertices(const state& s, vector<vertex*>& near_vertices, 
       delete[] key;
       kd_res_free(kdres);
       return toret;
-    }
+    }*/
     
     
-int dubins_t::get_key(const dubins_t::state& s, float* key, const dubins_t::region& operating_region, float offset)
+/*int dubins_t::get_key(const dubins_t::state& s, float* key, const dubins_t::region& operating_region, float offset)
 {
       //for(size_t i=0; i<N; i++)
         key[0] = s.x[0]-offset*cos(s.x[2]);
 	key[1] = s.x[1]-offset*sin(s.x[2]);
-	key[2] = s.x[2];
+	key[2] = 0;
       //cout<<"key: "<< key[0]<<" "<<key[1]<<" "<<key[2]<<endl;
       return 0;
-    }
+    }*/
     
   
   

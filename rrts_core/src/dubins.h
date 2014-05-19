@@ -10,7 +10,7 @@ class dubins_t : public dynamical_system_t<3>
 {
   public:
  
-   typedef state_t<3> state;
+    typedef state_t<3> state;
     typedef vertex_t<3> vertex;
     typedef region_t<3> region;
 
@@ -21,7 +21,7 @@ class dubins_t : public dynamical_system_t<3>
 
     dubins_t() : delta_distance(0.07)
     {
-      turning_radii[0] = 3;
+      turning_radii[0] = 6;
       //turning_radii[1] = 8;
       //turning_radii[2] = 8;
       //turning_radii[3] = 9;
@@ -36,8 +36,9 @@ class dubins_t : public dynamical_system_t<3>
     float extend_dubins_all(const float si[3], const float sf[3], bool return_trajectory,
         trajectory_t& traj, float turning_radius);
     
-    int get_near_vertices(const state& s, vector<vertex*>& near_vertices, kdtree* kdt, float gamma, int num_vertices, region operating_region);
-    int get_key(const state& s, float* key, const region& operating_region, float offset);
+    
+    //int get_near_vertices(const state& s, vector<vertex*>& near_vertices, kdtree* kdt, float gamma, int num_vertices, const region& operating_region);
+    //int get_key(const state& s, float* key, const region& operating_region, float offset);
 };
 
 class dubins_optimization_data_t : public optimization_data_t
